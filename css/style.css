@@ -1,1 +1,15 @@
 /* her skal alles css samles til sidst. Vi starter med at lave en side hver */
+
+/*tekst*/
+h1 {
+  font-family: var(--font-reenie);
+}
+
+h2 {
+  font-family: var(--font-spray);
+}
+
+p {
+  font-family: var(--font-inter);
+  font-size: 14px;
+}
