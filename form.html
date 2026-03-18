@@ -15,15 +15,255 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
     <title>Base fertility</title>
 </head>
 
 <body>
     <header></header>
-    <main>
+    <main class="form-page">
+        <section class="form-hero">
 
+            <h1>Bliv donor</h1>
+            <p>
+                Med vores formular, kan du nemt
+                skrive dig op som donor og gøre en forskel for andre.
+            </p>
+        </section>
+
+        <section class="donor-form-wrapper">
+
+            <div class="donor-tabs">
+                <button class="tab active">Sæddonor</button>
+                <button class="tab">Ægdonor</button>
+            </div>
+
+            <form class="donor-form">
+                <input type="hidden" name="donorType" id="donorType" value="saeddonor">
+
+                <div class="form-group">
+                    <label for="name">Fulde navn</label>
+                    <input type="text" id="name" name="name" placeholder="Indtast dit navn">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Indtast din e-mail">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefonnummer</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Indtast dit telefonnummer">
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Alder</label>
+                    <input type="number" id="age" name="age" placeholder="Indtast din alder">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adresse</label>
+                    <input type="text" id="address" name="address" placeholder="Indtast din adresse" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">By</label>
+                        <input type="text" id="city" name="city" placeholder="Indtast din by">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postcode">Postnummer</label>
+                        <input type="text" id="postcode" name="postcode" placeholder="Indtast dit postnummer">
+                    </div>
+                </div>
+
+                <div class="form-group consent-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="consent" name="consent">
+
+                        Jeg giver samtykke til, at mine oplysninger behandles i forbindelse
+                        med min ansøgning som donor. Jeg har læst vilkår og privatlivspolitik.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">Send ansøgning</button>
+            </form>
+        </section>
+
+        <section class="benefits">
+            <article class="benefit-item">
+                <img src="img/heart.svg" alt="">
+                <p>Gør en forskel</p>
+            </article>
+
+            <article class="benefit-item">
+                <img src="img/money.svg" alt="">
+                <p>Kompensation</p>
+            </article>
+
+            <article class="benefit-item">
+                <img src="img/doctor.svg" alt="">
+                <p>Professionel støtte</p>
+            </article>
+
+            <article class="benefit-item">
+                <img src="img/health.svg" alt="">
+                <p>Sundhedstjek</p>
+            </article>
+        </section>
+
+        <section class="faq">
+            <h2>Ofte stillede spørgsmål</h2>
+            <p class="faq-intro">
+                Her finder du svar på nogle af de mest almindelige spørgsmål om at blive donor.
+            </p>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Hvem kan blive donor?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Du skal opfylde en række sundheds- og alderskrav for at blive donor.
+                        Typisk skal du være sund og rask, have en stabil livsstil og leve op til
+                        klinikkens krav. Derudover gennemgår alle potentielle donorer en
+                        helbredsvurdering.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Hvordan foregår processen?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Du starter med at udfylde ansøgningsformularen på siden. Herefter bliver
+                        du kontaktet med information om de næste skridt. Hvis du går videre i
+                        processen, kan du blive inviteret til en samtale, screening og eventuelle
+                        helbredstjek.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Får man kompensation?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Ja, donorer modtager ofte en økonomisk kompensation for den tid og indsats,
+                        de bruger i forbindelse med donationen. Den konkrete kompensation afhænger
+                        af donationstypen og klinikkens retningslinjer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Hvor lang tid tager processen?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Selve ansøgningen tager kun få minutter at udfylde. Hvis du bliver godkendt
+                        som donor, kan processen dog strække sig over flere uger, da der ofte
+                        indgår samtaler, helbredstjek og eventuelle tests.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Er donation anonym?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Det afhænger af typen af donation. Nogle donationer er anonyme, mens andre
+                        kan være åbne donationer, hvor barnet senere kan få adgang til visse
+                        oplysninger om donoren. Du vil blive informeret om mulighederne undervejs.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Er det sikkert at blive donor?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Ja, donorprocessen foregår under professionelle og kontrollerede forhold.
+                        Klinikker følger sundheds- og sikkerhedsprocedurer for at sikre, at
+                        donationen foregår så trygt og forsvarligt som muligt.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Kan jeg fortryde min ansøgning?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Ja, du kan altid vælge ikke at fortsætte processen, hvis du ændrer mening.
+                        Det er uforpligtende at sende en ansøgning, og du vil løbende blive
+                        informeret om de næste trin.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Hvad sker der efter jeg har sendt ansøgningen?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Når du har sendt din ansøgning, bliver dine oplysninger gennemgået, og du
+                        bliver kontaktet med næste skridt. Det kan være yderligere information,
+                        en samtale eller en invitation til screening.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Påvirker donation min egen fertilitet?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Donation påvirker normalt ikke din egen fertilitet. Processen er planlagt
+                        til at foregå under trygge forhold og med fokus på donorens sundhed og
+                        velbefindende.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button type="button" class="faq-question">
+                    <span>Hvor mange gange kan man donere?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>
+                        Det afhænger af gældende regler og klinikkens retningslinjer. Der vil ofte
+                        være grænser for, hvor mange gange man kan donere, både af hensyn til
+                        donorens sundhed og de overordnede rammer for donation.
+                    </p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer></footer>
+    <script src="js/form.js"></script>
 </body>
 
 </html>
