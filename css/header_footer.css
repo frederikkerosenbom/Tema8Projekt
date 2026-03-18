@@ -30,6 +30,10 @@ header {
   font-size: 18px;
 }
 
+.sub_menu li {
+  list-style: inside;
+}
+
 .sub_menu li,
 .sub_menu a {
   font-family: var(--font-inter);
@@ -49,7 +53,7 @@ header {
   transition: 0.2s linear;
 }
 
-.left button {
+.burger {
   border: none;
   display: flex;
   flex-direction: column;
@@ -94,6 +98,48 @@ nav.active {
 nav * {
   font-family: var(--font-spray);
   text-decoration: none;
-  letter-spacing: 4%;
+  letter-spacing: 0.2rem;
   color: var(--brown);
+}
+
+@media screen and (max-width: 840px) {
+  .logo a {
+    width: 3.5rem;
+  }
+
+  .burger .line {
+    width: 25px;
+  }
+
+  .burger {
+    gap: 0.3rem;
+  }
+
+  nav {
+    padding: 2rem;
+  }
+
+  nav.active {
+    border: none;
+    box-shadow: none;
+    right: 0;
+  }
+
+  nav.active .burgerMenu {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .burger.active .line:nth-child(1) {
+    transform: rotate(45deg) translateY(10px);
+  }
+
+  .burger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+
+  .sub_menu {
+    padding: 0;
+  }
 }
