@@ -1,0 +1,170 @@
+/**********************************************
+ ICON ACTIONS: likes og kurv
+**********************************************/
+.iconActions {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 700;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: end;
+}
+
+.iconBtn {
+  border: none;
+  background: none;
+  color: var(--brown);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+.iconBtn .iconSvg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--brown);
+}
+
+.iconBtn span {
+  font-family: var(--font-inter);
+  color: var(--brown);
+  font-size: 1rem;
+}
+
+/* underline når ikon er aktivt */
+.iconBtn.isActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--brown);
+}
+
+/***** OVERLAY *****/
+.sidePanelOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(79, 52, 25, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 800;
+}
+
+.sidePanelOverlay.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/***** FÆLLES PANEL *****/
+.sidePanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(420px, 92vw);
+  height: 100vh;
+  background-color: var(--creme);
+  border-left: 2px solid var(--brown);
+  box-shadow: -8px 0 0 rgba(79, 52, 25, 0.15);
+  transform: translateX(100%);
+  transition: transform 220ms ease;
+  z-index: 900;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.sidePanel.isOpen {
+  transform: translateX(0);
+}
+
+.sidePanelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.sidePanelHeader h3 {
+  margin: 0;
+  font-family: var(--font-spray);
+  color: var(--brown);
+  font-size: 1.3rem;
+  letter-spacing: 4%;
+  font-weight: 100;
+  border-bottom: 1px solid var(--brown);
+  padding-bottom: 0.4rem;
+  width: 100%;
+}
+
+.sidePanelClose {
+  border: none;
+  background: none;
+  color: var(--brown);
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.sidePanelItems {
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.sidePanelFooter {
+  padding: 1.25rem;
+}
+
+.sidePanelClearBtn {
+  border: none;
+  background: none;
+  color: var(--brown);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-inter);
+}
+
+/***** ITEM CARD I PANEL *****/
+.panelItem {
+  border-bottom: 1px solid rgba(79, 52, 25, 0.4);
+  padding-bottom: 1rem;
+}
+
+.panelItem h4 {
+  margin: 0 0 0.3rem;
+  color: var(--brown);
+  font-family: var(--font-inter);
+}
+
+.panelItem p {
+  margin: 0 0 0.5rem;
+  color: var(--brown);
+  font-family: var(--font-inter);
+}
+
+.panelItemActions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.panelItemActions a,
+.panelItemActions button {
+  border: none;
+  border-radius: 999px;
+  background-color: var(--yellow);
+  color: var(--brown);
+  padding: 0.45rem 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--font-inter);
+}
