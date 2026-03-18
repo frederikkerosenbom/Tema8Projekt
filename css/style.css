@@ -1,5 +1,9 @@
 /* her skal alles css samles til sidst. Vi starter med at lave en side hver */
-
+body {
+  background-color: var(--creme);
+  color: var(--brown);
+  font-family: var(--font-inter);
+}
 /*tekst*/
 h1 {
   font-family: var(--font-reenie);
