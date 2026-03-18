@@ -15,15 +15,174 @@
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/donorlist.css" />
+    <link rel="stylesheet" href="css/donorlist-icons.css" />
+
+
+    <!-- <script src="js/global-storage.js" defer></script> denne skal på alle sider -->
+    <script src="js/global-storage.js" defer></script>
+    <script src="js/donorlist.js" defer></script>
     <title>Base fertility</title>
 </head>
 
 <body>
-    <header></header>
-    <main>
+    <header>
+        /********Indsæt navigation********/
+        <div class="iconActions">
+            <button type="button" id="likesToggle" class="iconBtn" aria-label="Likes">
+                <svg class="iconSvg" width="43" height="38" viewBox="0 0 43 38" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M38.5788 3.95654C37.5785 2.95584 36.3909 2.16201 35.0838 1.62041C33.7767 1.07881 32.3757 0.800049 30.9609 0.800049C29.546 0.800049 28.145 1.07881 26.8379 1.62041C25.5308 2.16201 24.3432 2.95584 23.3429 3.95654L21.2671 6.03237L19.1913 3.95654C17.1709 1.93614 14.4306 0.801096 11.5734 0.801096C8.71608 0.801096 5.97583 1.93614 3.95543 3.95654C1.93504 5.97694 0.799988 8.71718 0.799988 11.5745C0.799988 14.4317 1.93504 17.172 3.95543 19.1924L21.2671 36.504L38.5788 19.1924C39.5795 18.1921 40.3733 17.0046 40.9149 15.6974C41.4565 14.3903 41.7353 12.9893 41.7353 11.5745C41.7353 10.1596 41.4565 8.75858 40.9149 7.45147C40.3733 6.14436 39.5795 4.95677 38.5788 3.95654Z"
+                        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span id="likesCount">0</span>
+            </button>
 
+            <button type="button" id="cartToggle" class="iconBtn" aria-label="Kurv">
+                <svg class="iconSvg" width="45" height="38" viewBox="0 0 45 38" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 1H8.66667L13.8033 23.8746C13.9786 24.6611 14.4587 25.3676 15.1595 25.8704C15.8603 26.3733 16.7372 26.6404 17.6367 26.625H36.2667C37.1662 26.6404 38.0431 26.3733 38.7439 25.8704C39.4447 25.3676 39.9247 24.6611 40.1 23.8746L43.1667 9.54167H10.5833M18.25 35.1667C18.25 36.1102 17.3919 36.875 16.3333 36.875C15.2748 36.875 14.4167 36.1102 14.4167 35.1667C14.4167 34.2232 15.2748 33.4583 16.3333 33.4583C17.3919 33.4583 18.25 34.2232 18.25 35.1667ZM39.3333 35.1667C39.3333 36.1102 38.4752 36.875 37.4167 36.875C36.3581 36.875 35.5 36.1102 35.5 35.1667C35.5 34.2232 36.3581 33.4583 37.4167 33.4583C38.4752 33.4583 39.3333 34.2232 39.3333 35.1667Z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+    <main class="donorlistPage">
+        <!-- LIKES PANEL -->
+        <aside id="likesPanel" class="sidePanel" aria-hidden="true">
+            <div class="sidePanelHeader">
+                <h3>Dine likes</h3>
+                <button type="button" id="likesCloseBtn" class="sidePanelClose">✕</button>
+            </div>
+
+            <div id="likesItems" class="sidePanelItems"></div>
+
+            <div class="sidePanelFooter">
+                <button type="button" id="likesClearBtn" class="sidePanelClearBtn">Ryd likes</button>
+            </div>
+        </aside>
+
+        <!-- CART PANEL -->
+        <aside id="cartPanel" class="sidePanel" aria-hidden="true">
+            <div class="sidePanelHeader">
+                <h3>Din kurv</h3>
+                <button type="button" id="cartCloseBtn" class="sidePanelClose">✕</button>
+            </div>
+
+            <div id="cartItems" class="sidePanelItems"></div>
+
+            <div class="sidePanelFooter">
+                <button type="button" id="cartClearBtn" class="sidePanelClearBtn">Ryd kurv</button>
+            </div>
+        </aside>
+
+        <div id="sidePanelOverlay" class="sidePanelOverlay" aria-hidden="true"></div>
+
+        <section id="donorlist-top">
+            <div class="topBar">
+                <div class="filterSort">
+                    <button type="button" id="filterToggle" class="topActionBtn">
+                        Filter <span class="toggleSymbol">+</span>
+                    </button>
+
+                    <button type="button" id="sortToggle" class="topActionBtn">
+                        Sorter <span class="toggleSymbol">+</span>
+                    </button>
+                </div>
+                <h1 id="donorlistHeaderOne"></h1>
+            </div>
+
+
+        </section>
+
+        <!-- FILTER SLIDE-IN -->
+        <aside id="filterPanel" class="filterPanel" aria-hidden="true">
+            <div class="filterHeader">
+                <h3>Filter</h3>
+                <button type="button" id="filterCloseBtn" class="filterCloseBtn">−</button>
+            </div>
+
+            <div class="activeRow">
+                <p>Aktive filtre</p>
+                <p>Antal visninger: <span id="activeCount">0</span></p>
+            </div>
+
+            <div class="filterOptions">
+                <label>
+                    Øjenfarve
+                    <select id="eyeFilter">
+                        <option value="">Alle</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                        <option value="Hazel">Hazel</option>
+                        <option value="Gray">Gray</option>
+                        <option value="Amber">Amber</option>
+                    </select>
+                </label>
+
+                <label>
+                    Højde
+                    <select id="heightFilter">
+                        <option value="">Alle</option>
+                        <option value="short">Under 170 cm</option>
+                        <option value="medium">170-185 cm</option>
+                        <option value="tall">Over 185 cm</option>
+                    </select>
+                </label>
+
+                <label>
+                    Hårfarve
+                    <select id="hairFilter">
+                        <option value="">Alle</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Black">Black</option>
+                        <option value="Blonde">Blonde</option>
+                        <option value="Red">Red</option>
+                        <option value="Gray">Gray</option>
+                        <option value="White">White</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Purple">Purple</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="filterFooter">
+                <button type="button" id="clearFilters" class="clearBtn">Ryd alt</button>
+            </div>
+        </aside>
+
+        <div id="filterOverlay" class="filterOverlay" aria-hidden="true"></div>
+
+        <!-- SORT DROPDOWN -->
+        <div id="sortPanel" class="sortPanel" aria-hidden="true">
+
+            <label class="sortLabel">
+                Vælg sortering
+                <select name="sorter" id="sorter">
+                    <option value="default">Standard</option>
+                    <option value="newToOld">Nyeste ⭢ Ældste</option>
+                    <option value="oldToNew">Ældste ⭢ Nyeste</option>
+                </select>
+            </label>
+        </div>
+
+        <section id="donorsContainer"></section>
+
+        <section id="pagination">
+            <button type="button" id="prevPageBtn">Forrige</button>
+            <p id="pageInfo"></p>
+            <button type="button" id="nextPageBtn">Næste</button>
+        </section>
     </main>
-    <footer></footer>
+
+    <footer>
+        /********Indsæt footer********/
+    </footer>
 </body>
 
 </html>

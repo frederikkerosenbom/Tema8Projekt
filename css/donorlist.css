@@ -1,0 +1,451 @@
+/**********************************************
+ DONORLIST CSS: Alt layout + cards + filter/sort + pagination
+**********************************************/
+
+.donorlistPage {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 1rem;
+  position: relative;
+}
+
+/***** TOP *****/
+#donorlist-top {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 300;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filterSort {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.topActionBtn {
+  background: none;
+  border: none;
+  color: var(--brown);
+  font-family: var(--font-spray);
+  font-size: 1.4rem;
+  cursor: pointer;
+  letter-spacing: 4%;
+}
+
+.topActionBtn span {
+  font-family: var(--font-inter);
+  font-size: 1.2rem;
+}
+
+#donorlistHeaderOne {
+  font-family: var(--font-reenie);
+  font-size: 2.5rem;
+  text-align: right;
+  margin: 0 0 1rem;
+}
+
+/******** FÆLLES PANEL STYLING ********/
+.panel {
+  background-color: var(--creme);
+  border: 2px solid var(--brown);
+  box-shadow: 12px 12px 0 rgba(79, 52, 25, 0.15);
+  padding: 1rem;
+}
+
+/* SKJULER ELEMENTER */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/******** FILTER PANEL ********/
+.filterPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(88vw, 520px);
+
+  height: 100vh;
+
+  background-color: var(--creme);
+  border-right: 2px solid var(--brown);
+  border-bottom: 2px solid var(--brown);
+  border-top: 2px solid var(--brown);
+  box-shadow: 8px 8px 0 rgba(79, 52, 25, 0.15);
+  padding: 0.9rem;
+  padding-left: 4.5rem;
+  z-index: 500;
+  overflow-y: auto;
+
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+
+.filterPanel.isOpen {
+  transform: translateX(0);
+}
+
+.filterOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(79, 52, 25, 0.18);
+  z-index: 450;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.filterOverlay.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.filterHeader h3 {
+  margin: 0;
+  font-family: var(--font-spray);
+  color: var(--brown);
+  font-size: 1.3rem;
+  font-weight: 100;
+  letter-spacing: 4%;
+}
+
+.filterCloseBtn {
+  border: none;
+  background: none;
+  color: var(--brown);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding-left: 4px;
+}
+
+.activeRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filterOptions {
+  display: grid;
+  gap: 1rem;
+}
+
+.filterOptions label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--brown);
+  font-family: var(--font-inter);
+}
+
+.filterOptions select {
+  border: 1px solid var(--brown);
+  background: #f8f7e8;
+  color: var(--brown);
+  padding: 0.75rem;
+  font-family: var(--font-inter);
+}
+
+.filterFooter {
+  margin-top: 1rem;
+}
+
+.clearBtn {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  color: var(--brown);
+  cursor: pointer;
+  padding: 0;
+}
+/******** SORT PANEL ********/
+#donorlist-top {
+  position: relative;
+  z-index: 300;
+}
+
+.sortPanel {
+  position: absolute;
+  top: 4.3rem;
+  left: 7rem;
+  width: min(88vw, 420px);
+  background-color: var(--creme);
+  border: 2px solid var(--brown);
+  box-shadow: 12px 12px 0 rgba(79, 52, 25, 0.15);
+  padding: 1rem;
+  z-index: 400;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 0.2s ease;
+}
+
+.sortPanel.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.sortLabel {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--brown);
+}
+
+.sortLabel select {
+  border: 1px solid var(--brown);
+  background: #f8f7e8;
+  color: var(--brown);
+  padding: 0.75rem;
+  font-family: var(--font-inter);
+}
+/******** PANEL INDHOLD ********/
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.panelHeader h2 {
+  margin: 0;
+  font-family: var(--font-spray);
+  font-size: 1.7rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--brown);
+  cursor: pointer;
+}
+
+.activeRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.filterOptions {
+  display: grid;
+  gap: 1rem;
+}
+
+.filterOptions label,
+.sortLabel {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.filterOptions select,
+.sortLabel select {
+  border: 1px solid var(--brown);
+  background: #f8f7e8;
+  padding: 0.75rem;
+  color: var(--brown);
+  font-family: var(--font-inter);
+}
+
+.clearBtn {
+  margin-top: 1rem;
+  border: none;
+  background: none;
+  text-decoration: underline;
+  color: var(--brown);
+  cursor: pointer;
+  padding: 0;
+}
+
+/******** DONOR GRID ********/
+/* mobile first = 2 kolonner */
+#donorsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.donorCard {
+  border: 2px solid var(--brown);
+  background-color: var(--creme);
+  box-shadow: 8px 8px 0 rgba(79, 52, 25, 0.15);
+  overflow: hidden;
+}
+
+.donorImg {
+  position: relative;
+  background-color: var(--brown);
+  min-height: 170px;
+}
+
+.donorImg img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border: 2px solid var(--creme);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.newBadge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  background-color: var(--pink);
+  color: var(--brown);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.donorInfo {
+  padding: 0.9rem;
+}
+
+.donorInfo h3 {
+  margin: 0 0 0.8rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.infoText {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.infoText div {
+  text-align: center;
+  border-bottom: 1px solid rgba(79, 52, 25, 0.4);
+  padding-bottom: 0.35rem;
+}
+
+.infoText h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.78rem;
+  font-weight: bold;
+}
+
+.infoText p {
+  margin: 0;
+  font-size: 0.78rem;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.seMereBtn,
+.cartBtn {
+  border: none;
+  border-radius: 999px;
+  background-color: var(--yellow);
+  color: var(--brown);
+  padding: 0.55rem 1rem;
+  text-decoration: underline;
+  font-size: 0.85rem;
+  font-family: var(--font-inter);
+  cursor: pointer;
+}
+
+/* ==== like icon ==== */
+.heartIcon {
+  width: 30px;
+  height: 45px;
+  fill: var(--creme);
+  transition: 0.2s ease;
+}
+.likeBtn {
+  background: transparent;
+  border: none;
+  display: block;
+  justify-self: end;
+  margin-right: 10px;
+}
+.likeBtn:hover .heartIcon {
+  transform: scale(1.1);
+}
+
+.likeBtn.liked .heartIcon {
+  fill: var(--pink);
+}
+
+/******** PAGINATION ********/
+#pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#pagination button {
+  border: none;
+  background-color: var(--brown);
+  color: var(--creme);
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+}
+
+#pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#pageInfo {
+  margin: 0;
+}
+
+/********* TABLET ********/
+@media (min-width: 700px) {
+  .topActionBtn {
+    font-size: 1.3rem;
+  }
+
+  .donorImg img {
+    width: 110px;
+    height: 110px;
+  }
+
+  #donorlistHeaderOne {
+    font-size: 3rem;
+  }
+}
+
+/********* DESKTOP ********/
+@media (min-width: 1024px) {
+  #donorsContainer {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .filterPanel {
+    top: 4.5rem;
+    height: 70vh;
+  }
+
+  .sortPanel {
+    left: 7rem;
+    width: 460px;
+  }
+}
