@@ -1,57 +1,38 @@
-/* =========================
-   FORM PAGE
-========================= */
-
 .form-page {
   background-color: var(--creme);
   color: var(--brown);
   padding: 2rem 1rem 4rem;
 }
 
-/* =========================
-   HERO / INTRO
-========================= */
-
-.form-hero {
+.form-hero,
+.faq {
   max-width: 700px;
   margin: 0 auto 3rem;
   text-align: center;
 }
 
-.form-hero .logo {
-  width: 70px;
-  margin: 0 auto 1rem;
-  display: block;
-}
-
 .form-page h1 {
   margin-bottom: 1rem;
   font-size: 2.5rem;
-  text-align: center;
 }
 
 .form-hero p {
   max-width: 580px;
   margin: 0 auto;
   line-height: 1.6;
-  text-align: center;
 }
 
-/* =========================
-   FORM WRAPPER
-========================= */
-
-.donor-form-wrapper {
+.donor-form-wrapper,
+.benefits {
   max-width: 900px;
   margin: 0 auto 4rem;
+}
+
+.donor-form-wrapper {
   background-color: var(--green);
   border-radius: 1.5rem;
   padding: 2rem 1.5rem 3rem;
 }
-
-/* =========================
-   TABS
-========================= */
 
 .donor-tabs {
   display: grid;
@@ -90,10 +71,6 @@
   border-radius: 999px;
 }
 
-/* =========================
-   FORM
-========================= */
-
 .donor-form {
   display: flex;
   flex-direction: column;
@@ -105,11 +82,15 @@
   flex-direction: column;
 }
 
-.form-group label {
+.form-group label,
+.checkbox-label {
   color: var(--creme);
-  margin-bottom: 0.75rem;
   font-family: var(--font-inter);
   font-size: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 0.75rem;
 }
 
 .form-group input,
@@ -126,29 +107,49 @@
   outline: none;
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
 .form-group input::placeholder,
 .form-group textarea::placeholder,
 .form-group select {
   color: rgba(239, 238, 213, 0.75);
 }
 
-/* =========================
-   BUTTON
-========================= */
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.consent-group {
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+  accent-color: var(--creme);
+}
 
 .submit-btn {
   align-self: center;
   margin-top: 1rem;
-  background-color: var(--creme);
-  color: var(--brown);
+  padding: 1rem 2.5rem;
   border: none;
   border-radius: 0.7rem;
-  padding: 1rem 2.5rem;
+  background-color: var(--creme);
+  color: var(--brown);
   font-family: var(--font-inter);
   font-size: 1rem;
   cursor: pointer;
@@ -159,13 +160,22 @@
   transform: translateY(-2px);
 }
 
-/* =========================
-   BENEFITS / ICONS
-========================= */
+.form-message {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: rgba(239, 238, 213, 0.15);
+  color: var(--creme);
+  text-align: center;
+  font-family: var(--font-inter);
+}
+
+.form-message.show {
+  display: block;
+}
 
 .benefits {
-  max-width: 900px;
-  margin: 0 auto 4rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
@@ -175,37 +185,41 @@
 .benefit-item img {
   width: 38px;
   height: 38px;
-  object-fit: contain;
   margin: 0 auto 0.75rem;
   display: block;
+  object-fit: contain;
 }
 
 .benefit-item p {
   font-size: 0.95rem;
 }
 
-/* =========================
-   FAQ
-========================= */
 .faq {
   max-width: 960px;
-  margin: 0 auto;
+  margin-bottom: 0;
 }
 
 .faq h2 {
-  text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+}
+
+.faq-intro {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: var(--brown);
+  opacity: 0.8;
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(79, 52, 25, 0.2);
   padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(79, 52, 25, 0.2);
 }
 
 .faq-question {
   width: 100%;
-  background: none;
+  padding: 1rem 0;
   border: none;
+  background: none;
   color: var(--brown);
   font-family: var(--font-inter);
   font-size: 1.2rem;
@@ -213,7 +227,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
   cursor: pointer;
 }
 
@@ -229,22 +242,14 @@
 }
 
 .faq-answer p {
-  padding: 0 0 1rem 0;
   margin: 0;
+  padding: 0 0 1rem;
   line-height: 1.6;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 200px;
+  max-height: 220px;
 }
-
-.faq-item.active .faq-icon {
-  content: "-";
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 768px) {
   .form-page {
@@ -261,12 +266,20 @@
   }
 
   .tab {
-    font-size: 1.5rem;
     padding: 1.2rem 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .form-row,
+  .benefits {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .form-row {
+    gap: 1rem;
   }
 
   .benefits {
-    grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
   }
 
@@ -288,60 +301,13 @@
     font-size: 1.2rem;
   }
 
+  .form-row,
   .benefits {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .submit-btn {
     width: 100%;
     max-width: 220px;
   }
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.consent-group {
-  margin-top: 0.5rem;
-}
-
-.checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  color: var(--creme);
-  font-family: var(--font-inter);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.checkbox-label input[type="checkbox"] {
-  margin-top: 0.2rem;
-  width: 18px;
-  height: 18px;
-  accent-color: var(--creme);
-}
-
-.form-message {
-  margin-top: 1rem;
-  text-align: center;
-  color: var(--creme);
-  font-family: var(--font-inter);
-  font-size: 1rem;
-}
-
-@media (max-width: 768px) {
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-.form-message {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 15px;
 }
