@@ -1,5 +1,5 @@
-// const params = new URLSearchParams(window.location.search);
-// const id = params.get("id");
+const params1 = new URLSearchParams(window.location.search);
+id = params1.get("id");
 
 // const productURL = "https://dummyjson.com/users/" + id;
 const detailcontainer = document.querySelector("#donorDetailContainer");
@@ -14,10 +14,13 @@ const gender = params.get("gender");
 /**** get a single user ****/
 
 function getData() {
-  fetch(`https://dummyjson.com/users/1`)
+  fetch(`https://dummyjson.com/users/${id}`)
     .then((res) => res.json())
     // .then(console.log)
-    .then((data) => show(data));
+    .then((data) => {
+      show(data);
+      applyGenderFilter();
+    });
 }
 
 /* ============================================
@@ -34,24 +37,28 @@ function applyGenderFilter(data) {
     return data.filter((person) => person.gender === "female");
   }
 
-  donorlistHeader.textContent = "Alle donorer";
   return data;
 }
 
 function show(data) {
+  const likedDonors = getLikedDonors(); // fra global-storage.js
+
+  const isLiked = likedDonors.includes(data.id);
   detailcontainer.innerHTML = `
         <div class="detailPic"><img src="${data.image}" alt=""></div>
 
          <div class="detailInfo">
                 <div class="idRow"><h3>ID</h3><p>#${data.id}</p>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="heartIcon">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-               </svg>
+             <button 
+            class="likeBtn ${isLiked ? "liked" : ""}" 
+            data-id="${data.id}" 
+            aria-label="Like donor"
+          >
+            <svg class="heartIcon heartIcon-detail" viewBox="0 0 24 24">
+              <path d="M12 21s-6-4.35-9-7.5S0 6.5 3 4.5 8.5 4 12 7c3.5-3 7-3.5 9-2.5s3 6 0 9S12 21 12 21z"/>
+            </svg>
+          </button>
                 
                 </div>
                 <div class="infoText">
@@ -62,10 +69,38 @@ function show(data) {
                     <div><h3>Øjenfarve</h3><p>${data.eyeColor}</p></div>
                     <div><h3>Højde</h3><p>${data.height} cm</p></div>
                 </div>
-                <a href="" class="detailKnap">Tilføj til kurv</a>
+                 <button class="detailKnap cartBtn" data-id="${data.id}">
+              Tilføj til kurv
+            </button>
             </div>
 
   `;
+  addCardEventListeners();
+
+  updateGlobalCounts();
 }
 
+/* ============================================
+   EVENTS PÅ CARDS
+============================================ */
+
+function addCardEventListeners() {
+  const likeButtons = document.querySelectorAll(".likeBtn");
+  const cartButtons = document.querySelectorAll(".cartBtn");
+
+  likeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const donorId = Number(btn.dataset.id);
+      toggleLike(donorId);
+    });
+  });
+
+  cartButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const donorId = Number(btn.dataset.id);
+      addToCart(donorId);
+      updateGlobalCounts();
+    });
+  });
+}
 getData();

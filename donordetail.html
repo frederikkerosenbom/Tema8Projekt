@@ -23,6 +23,7 @@
     <script src="js/donordetail.js" defer></script>
 
     <script src="js/burger.js" defer></script>
+
     <script src="js/global-storage.js" defer></script>
 
 
@@ -88,6 +89,33 @@
                 <h2>Tilbage</h2>
             </a>
         </div>
+        <aside id="likesPanel" class="sidePanel" aria-hidden="true">
+            <div class="sidePanelHeader">
+                <h3>Dine likes</h3>
+                <button type="button" id="likesCloseBtn" class="sidePanelClose">✕</button>
+            </div>
+
+            <div id="likesItems" class="sidePanelItems"></div>
+
+            <div class="sidePanelFooter">
+                <button type="button" id="likesClearBtn" class="sidePanelClearBtn">Ryd likes</button>
+            </div>
+        </aside>
+        <!-- CART PANEL -->
+        <aside id="cartPanel" class="sidePanel" aria-hidden="true">
+            <div class="sidePanelHeader">
+                <h3>Din kurv</h3>
+                <button type="button" id="cartCloseBtn" class="sidePanelClose">✕</button>
+            </div>
+
+            <div id="cartItems" class="sidePanelItems"></div>
+
+            <div class="sidePanelFooter">
+                <button type="button" id="cartClearBtn" class="sidePanelClearBtn">Ryd kurv</button>
+            </div>
+        </aside>
+
+        <div id="sidePanelOverlay" class="sidePanelOverlay" aria-hidden="true"></div>
 
         <section id="donorDetailContainer">
 
