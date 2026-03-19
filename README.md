@@ -109,6 +109,7 @@ project/
 ├── images/
 │   └── logo.svg
 ├── js/
+│   ├── index.js
 │   ├── donorlist.js
 │   ├── donordetail.js
 │   ├── burger.js
