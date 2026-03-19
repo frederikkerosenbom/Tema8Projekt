@@ -10,6 +10,11 @@ alt font skal rykkes til custom
 main {
   background-color: var(--creme);
 }
+@media (min-width: 840px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
 
 h2 {
   letter-spacing: 2px;

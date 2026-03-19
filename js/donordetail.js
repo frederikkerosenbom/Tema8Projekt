@@ -1,43 +1,26 @@
-const params1 = new URLSearchParams(window.location.search);
-id = params1.get("id");
+const params = new URLSearchParams(window.location.search);
+id = params.get("id");
 
 // const productURL = "https://dummyjson.com/users/" + id;
 const detailcontainer = document.querySelector("#donorDetailContainer");
-
-/* ============================================
-   URL PARAMETRE
-   Her læser vi hvad brugeren valgte fra forsiden
-============================================ */
-const params = new URLSearchParams(window.location.search);
-const gender = params.get("gender");
-
+const donor = document.querySelector(".donorDetailTitles h1");
+const donorBack = document.querySelector(".donorDetailTitles a");
 /**** get a single user ****/
 
 function getData() {
   fetch(`https://dummyjson.com/users/${id}`)
     .then((res) => res.json())
-    // .then(console.log)
+
     .then((data) => {
+      const backBtn = document.querySelector("#backBtn");
+
+      if (data.gender === "male") {
+        backBtn.href = "donorlist.html?gender=male";
+      } else {
+        backBtn.href = "donorlist.html?gender=female";
+      }
       show(data);
-      applyGenderFilter();
     });
-}
-
-/* ============================================
-   FILTER 1: GENDER FRA FORSIDEN
-============================================ */
-function applyGenderFilter(data) {
-  if (gender === "male") {
-    donorlistHeader.textContent = "Sæddonor";
-    return data.filter((person) => person.gender === "male");
-  }
-
-  if (gender === "female") {
-    donorlistHeader.textContent = "Ægdonor";
-    return data.filter((person) => person.gender === "female");
-  }
-
-  return data;
 }
 
 function show(data) {
@@ -75,6 +58,9 @@ function show(data) {
             </div>
 
   `;
+
+  donor.innerHTML = `${data.gender === "male" ? "Sæddonor" : "Ægdonor"}`;
+
   addCardEventListeners();
 
   updateGlobalCounts();
