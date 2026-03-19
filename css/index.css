@@ -1,0 +1,153 @@
+/* hero */
+.hero {
+  text-align: center;
+  padding: 60px 15px;
+  color: var(--brown);
+  background-color: var(--creme);
+}
+
+.hero h1 {
+  font-family: var(--font-reenie);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* knap */
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: var(--yellow);
+  color: var(--brown);
+  transition: 0.3s;
+  font-family: var(--font-inter);
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+/* sæd + æg */
+.choice {
+  background: var(--green);
+  text-align: center;
+  padding: 40px 15px;
+}
+
+.choice h2 {
+  font-family: var(--font-reenie);
+  margin-bottom: 25px;
+  color: var(--creme);
+  font-size: 1.8rem;
+}
+
+.choice-options {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.option img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* klienter */
+.clients {
+  padding: 40px 15px;
+}
+
+.clients h3 {
+  margin-bottom: 20px;
+  color: var(--brown);
+  font-family: var(--font-spray);
+  font-size: 1.2rem;
+  letter-spacing: 4%;
+  font-weight: 100;
+}
+
+/* karusel */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.4s ease;
+}
+
+.card {
+  min-width: 220px;
+  height: 300px;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+/* pile */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: 5px;
+}
+
+.arrow.right {
+  right: 5px;
+}
+
+@media (min-width: 800px) {
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .choice h2 {
+    font-size: 2.5rem;
+  }
+
+  .clients h3 {
+    font-size: 1.5rem;
+    letter-spacing: 4%;
+    font-weight: 100;
+  }
+
+  .card {
+    min-width: 300px;
+    height: 500px;
+  }
+
+  .choice {
+    padding: 140px 15px;
+  }
+
+  .choice-options {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
