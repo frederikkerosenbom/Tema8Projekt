@@ -4,6 +4,13 @@
 // const productURL = "https://dummyjson.com/users/" + id;
 const detailcontainer = document.querySelector("#donorDetailContainer");
 
+/* ============================================
+   URL PARAMETRE
+   Her læser vi hvad brugeren valgte fra forsiden
+============================================ */
+const params = new URLSearchParams(window.location.search);
+const gender = params.get("gender");
+
 /**** get a single user ****/
 
 function getData() {
@@ -11,6 +18,24 @@ function getData() {
     .then((res) => res.json())
     // .then(console.log)
     .then((data) => show(data));
+}
+
+/* ============================================
+   FILTER 1: GENDER FRA FORSIDEN
+============================================ */
+function applyGenderFilter(data) {
+  if (gender === "male") {
+    donorlistHeader.textContent = "Sæddonor";
+    return data.filter((person) => person.gender === "male");
+  }
+
+  if (gender === "female") {
+    donorlistHeader.textContent = "Ægdonor";
+    return data.filter((person) => person.gender === "female");
+  }
+
+  donorlistHeader.textContent = "Alle donorer";
+  return data;
 }
 
 function show(data) {
