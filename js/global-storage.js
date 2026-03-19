@@ -193,7 +193,6 @@ async function renderLikesPanel() {
       (donor) => `
       <article class="panelItem">
         <h4>ID: #${donor.id}</h4>
-        <p>${donor.firstName} ${donor.lastName}</p>
 
         <div class="panelItemActions">
           <a href="donordetail.html?id=${donor.id}">Se mere</a>
@@ -233,7 +232,7 @@ async function renderCartPanel() {
       (donor) => `
       <article class="panelItem">
         <h4>ID: #${donor.id}</h4>
-        <p>${donor.firstName} ${donor.lastName}</p>
+    
 
         <div class="panelItemActions">
           <a href="donordetail.html?id=${donor.id}">Se mere</a>
