@@ -38,8 +38,9 @@ p {
   padding: 8px 30px;
   transition: 0.3s;
   font-family: var(--font-inter);
-
+  border: none;
   margin-top: auto; /* skubber den ned */
+  text-decoration: underline;
 }
 
 .detailBack {
@@ -49,6 +50,7 @@ p {
 
 .detailPic {
   border: 2px var(--brown) solid;
+  box-shadow: 12px 12px 0 rgba(79, 52, 25, 0.15);
 }
 
 /************ Layout **************/
@@ -86,6 +88,7 @@ p {
   align-items: center;
 
   min-height: 300px; /* vigtig for at få plads til fordeling */
+  box-shadow: 12px 12px 0 rgba(79, 52, 25, 0.15);
 }
 
 .idRow {
@@ -93,12 +96,23 @@ p {
   width: 100%;
   text-align: center;
 }
-.heartIcon {
+.heartIcon-detail {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  width: 30px;
+  height: 45px;
+  fill: none;
+  stroke: var(--brown);
+  transition: 0.2s ease;
+}
+.heartIcon-detail:hover {
+  fill: var(--brown);
+}
+.likeBtn {
+  border: none;
 }
 
 /*** Web ***/
