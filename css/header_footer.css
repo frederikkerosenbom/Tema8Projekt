@@ -32,7 +32,7 @@ header {
 }
 
 .sub_menu li {
-  list-style: inside;
+  list-style: none;
 }
 
 .sub_menu li,
